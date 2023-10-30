@@ -18,7 +18,7 @@ Load the `<darkmode-toggle>` web component and add it to your page:
 
 Listen for the `color-scheme-change` event and change your page accordingly. For example:
 
-```javacript
+```js
 document.addEventListener("color-scheme-change", event => {
     event.detail.scheme === "dark"
     ? document.body.classList.add("dark-theme")
