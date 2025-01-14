@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darkmode Toggle Test</title>
+    <style>
+        /* Base styles and light theme (default) */
+        :root {
+            --background-color: hsl(30, 0%, 97%);
+            --text-color: hsl(30, 0%, 8%);
+            --hover-color: hsl(30, 0%, 92%);
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            min-height: 100vh;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        /* Dark theme using :has() */
+        body:has(darkmode-toggle[scheme="dark"]) {
+            --background-color: hsl(210, 74%, 17%);
+            --text-color: hsl(30, 0%, 98%);
+            --hover-color: hsl(210, 54%, 28%);
+        }
+
+        /* Layout */
+        header {
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--text-color);
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 60ch;
+            margin: 0 auto;
+        }
+
+        .card {
+            padding: 1rem;
+            border: 1px solid var(--text-color);
+            border-radius: 4px;
+            background-color: var(--hover-color);
+            margin: 1rem 0;
+        }
+    </style>
+    <script type="module" src="src/darkmode-toggle.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Darkmode Toggle Test</h1>
+        <darkmode-toggle></darkmode-toggle>
+    </header>
+    <main>
+        <h2>Test Content</h2>
+        <p>This is a test page to demonstrate the darkmode toggle functionality. The theme should switch smoothly between light and dark modes.</p>
+
+        <div class="card">
+            <h3>Sample Card</h3>
+            <p>This card has a slightly different background color to demonstrate color scheme variables in action.</p>
+        </div>
+
+        <div class="card">
+            <h3>Another Card</h3>
+            <p>The theme switch should affect all elements on the page consistently.</p>
+        </div>
+    </main>
+</body>
+</html>
