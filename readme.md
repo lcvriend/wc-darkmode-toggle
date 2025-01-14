@@ -7,6 +7,7 @@
 * Reacts to system preference
 * Stores and loads set preference
 * Dispatches a `color-scheme-change` event on change
+* Sets scheme attribute on itself
 
 ## How to use
 Load the `<darkmode-toggle>` web component and add it to your page:
@@ -16,7 +17,17 @@ Load the `<darkmode-toggle>` web component and add it to your page:
 <script src="src/wc-darkmode-toggle.js"></script>
 ```
 
-Listen for the `color-scheme-change` event and change your page accordingly. For example:
+Use the `:has`-selector to detect what theme needs to be loaded:
+
+```css
+body:has(darkmode-toggle[scheme="dark"]) {
+    --background-color: hsl(210, 74%, 17%);
+    --text-color: hsl(30, 0%, 98%);
+    ...
+}
+```
+
+Alternatively, listen for the `color-scheme-change` event and change your page accordingly. For example:
 
 ```js
 document.addEventListener("color-scheme-change", event => {
